@@ -1,0 +1,43 @@
+Drache Wut map file format
+==========================
+
+Original notes by Jason Ashworth for the ETGG 1802 map editor, updated for the
+current loader (drachewut/world.py). Maps live in drachewut/assets/maps/.
+
+A map is an INI file with one [level] section:
+
+    [level]
+    tileset = tiles32x32.bmp     (not used; the game draws tilesetDay.png)
+    map = b07b11b11...
+          b11b08b08...
+    warps = 3:3:forest.map:1600:1408
+            14:20:hubDungeon.map:960:1344
+    pos = 768:640
+    overlay = o07:1:1
+    enemies = 15:Cow
+    enemySpawn = 500:500
+
+map
+    The tile grid. Each tile is a 3-character code (a00 ... b55) defined in
+    drachewut/assets/tiles/master.con, which gives its cell in the tileset and
+    its flags: block, warp, damage, slow. Continuation lines are indented.
+
+warps
+    One line per portal tile: row : column : target map [: destX : destY]
+    Row and column are tile coordinates in this map, in that order. destX and
+    destY are the pixel position in the target map where the player arrives.
+    Without them the player arrives at the target's pos, or else on the portal
+    that leads back. A warp fires when the player steps onto a portal tile.
+
+pos
+    Start position in pixels (X : Y) for a new game or a respawn. Optional.
+
+overlay
+    Overlay image code : column : row. Parsed, but overlays are not drawn.
+
+enemies, enemySpawn
+    Count : enemy name, and spawn points in pixels (X : Y). Parsed, but no
+    enemies spawn yet.
+
+Keys such as warps must start at the beginning of a line. An indented key is
+read as part of the value above it; four 2013 maps had that problem.

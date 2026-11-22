@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "drache-wut"
+version = "2.0.0"
+description = "Drache Wut: a top-down multiplayer dungeon crawler built with pygame"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+dependencies = ["pygame-ce>=2.4"]
+
+[project.scripts]
+drache-wut = "drachewut.__main__:main"
+
+# The asset folders hold only data; listing them as (namespace) packages
+# lets setuptools ship them without warnings.
+[tool.setuptools.packages.find]
+include = ["drachewut*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.png", "*.jpg", "*.ttf", "*.map", "*.con", "*.txt"]
