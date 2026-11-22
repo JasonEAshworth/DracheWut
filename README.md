@@ -4,7 +4,7 @@ A top-down multiplayer dungeon crawler made with Python and pygame in 2012-2013 
 for ETGG 1802. It was inspired by Realm of the Mad God. It was never finished, but you can play
 it: pick a class and explore the world through its portals, alone or with friends over a LAN.
 
-**Play in the browser:** https://jasoneashworth.github.io/Python_Pygame_Game/ (single player)
+**Play in the browser:** https://jasoneashworth.github.io/DracheWut/ (single player)
 
 ## What works
 
